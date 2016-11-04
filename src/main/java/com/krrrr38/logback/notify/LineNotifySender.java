@@ -13,7 +13,7 @@ class LineNotifySender extends Thread {
     private static final int CONNECT_TIMEOUT = 2000;
     private static final int READ_TIMEOUT = 3000;
     private static final long RETRY_WAIT_MILLIS = 2000L;
-    private static final String AGGREGATE_MEEAGE_DELIMITER = "\n";
+    private static final String AGGREGATE_MESSAGE_DELIMITER = "\n";
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
     private final URL url;
     private final String accessToken;
@@ -32,14 +32,14 @@ class LineNotifySender extends Thread {
     @Override
     public void run() {
         while (isRunning.get()) {
-            if (queue.isEmpty()) {
-                continue;
-            }
-
             try {
                 Thread.sleep(aggregateMessageWaitMillis);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+            }
+
+            if (queue.isEmpty()) {
+                continue;
             }
 
             send(aggregate(queue));
@@ -62,12 +62,12 @@ class LineNotifySender extends Thread {
     }
 
     private String aggregate(Queue<String> queue) {
-        final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder("\n");
         String message;
         boolean isFirst = true;
         while ((message = queue.poll()) != null) {
             if (!isFirst) {
-                sb.append(AGGREGATE_MEEAGE_DELIMITER);
+                sb.append(AGGREGATE_MESSAGE_DELIMITER);
             }
             sb.append(message);
             isFirst = false;
