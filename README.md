@@ -26,7 +26,7 @@ Logback Appender for [LINE Notify](https://notify-bot.line.me).
     <level>WARN</level>
   </filter>
   <layout>
-    <pattern>%d{HH:mm:ss.SSS} %-5level %logger{0}%n%msg%n%ex{2}</pattern>
+    <pattern>%d{HH:mm:ss} %-5level %logger{0}%n%msg%n%ex{2}</pattern>
   </layout>
   <accessToken>YOUR_LINE_NOTIFY_ACCESSS_TOKEN</accessToken> // mandatory
   <endpoint>https://notify-api.line.me/api/notify</endpoint> // optional
@@ -37,6 +37,8 @@ Logback Appender for [LINE Notify](https://notify-bot.line.me).
   <appender-ref ref="LINE_NOTIFY"/>
 </root>
 ```
+
+NOTE: LINE Notify has Rate Limit. This appender doesn't guarantee all events would be sent.
 
 ## Dev Tools
 
