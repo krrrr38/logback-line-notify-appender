@@ -4,7 +4,7 @@
 
     <groupId>com.krrrr38</groupId>
     <artifactId>logback-line-notify-appender</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>LINE Notify Appender</name>
@@ -32,7 +32,7 @@
         <url>https://github.com/krrrr38/logback-line-notify-appender</url>
         <connection>scm:git:https://github.com/krrrr38/logback-line-notify-appender.git</connection>
         <developerConnection>scm:git:https://github.com/krrrr38/logback-line-notify-appender.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>0.0.2</tag>
     </scm>
 
     <distributionManagement>
